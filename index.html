@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <style>
+        body {
+            background-color: aqua;
+            margin: 0;
+            display: flex;   
+            align-items: center;
+            height: 100vh; 
+            padding-left: 50px; 
+        }
+
+        h1 {
+            text-align: center; 
+        }
+
+        .input-box {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            text-align: center;
+            margin-left: 160px;
+        }
+
+        h2 {
+            text-align: center; 
+            margin-top: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            display: block; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+        #form-container {
+            background-color: rgb(21, 51, 51);
+            width: 400px; 
+            padding: 20px; 
+            border-radius: 5px; 
+            color: white; 
+            margin-left: 350px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form-container">
+        <h1>CGPA Calculator</h1>
+        <div class="input-box">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem1">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem2">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem3">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem4">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem5">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem6">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem7">
+            <input type="number" name="cgpa" min="0" max="10" placeholder="sem8">
+        </div>
+        <button type="button" onclick="calculatecgpa()">Calculate CGPA</button>
+        <h2 id="result"></h2>
+    </form>
+    <script>
+        function calculatecgpa() {
+            const inputs = document.querySelectorAll('input[name="cgpa"]');
+            let sum = 0, count = 0;
+            inputs.forEach(input => {
+                const value = parseFloat(input.value);
+                if (!isNaN(value)) {
+                    sum += value;
+                    count++;
+                }
+            });
+            const cgpa = count > 0 ? (sum / count).toFixed(2) : 0;
+            document.getElementById('result').innerText = `Your CGPA is: ${cgpa}`;
+        }
+    </script>
+</body>
+</html>
